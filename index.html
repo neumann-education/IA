@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackwell University - Nueva Estrategia de Admisiones</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --main-blue: #071955;
+            --light-blue: #1e40af;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --white: #ffffff;
+            --gray-background: #f9fafb;
+            --border-color: #e5e7eb;
+            --font-serif: 'Source Serif Pro', serif;
+            --font-sans: 'Inter', sans-serif;
+            --green-light: #f0fdf4;
+            --green-dark: #15803d;
+            --orange-light: #fff7ed;
+            --orange-dark: #c2410c;
+        }
+        html { scroll-behavior: smooth; }
+        body { 
+            margin: 0; 
+            font-family: var(--font-sans); 
+            background-color: var(--white); 
+            color: var(--text-secondary); 
+            line-height: 1.6;
+        }
+
+        /* --- Contenedor Principal (Más Ancho) --- */
+        .container { 
+            width: 100%;
+            max-width: 1440px; 
+            margin: 0 auto;
+            padding: 0 2rem;
+            box-sizing: border-box;
+        }
+        main { padding: 4rem 0; }
+        section { margin-top: 6rem; }
+        
+        /* --- Cabecera y Pie de Página --- */
+        .main-header { 
+            background-color: var(--main-blue); 
+            padding: 1rem 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .header-logo { height: 40px; }
+        .main-footer { 
+            background-color: var(--main-blue); 
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center; 
+            padding: 2rem 1.5rem;
+            margin-top: 6rem;
+        }
+
+        /* --- Títulos (Más Impacto Visual) --- */
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 3.75rem);
+            color: var(--main-blue);
+            text-align: center;
+            margin: 0;
+        }
+        .hero-subtitle {
+            text-align: center;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            max-width: 900px;
+            margin: 1rem auto 5rem auto;
+            color: var(--text-primary);
+        }
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            color: var(--main-blue);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        /* ==========================================================================
+           Diagrama de Flujo (Mejorado y Animado)
+           ========================================================================== */
+        .flow-container { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        
+        .flow-step {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem 2rem;
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        .flow-step:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); }
+        
+        .flow-step .icon {
+            flex-shrink: 0; width: 52px; height: 52px;
+            background-color: var(--light-blue); color: var(--white);
+            border-radius: 50%; display: grid; place-items: center;
+        }
+        .flow-step .icon svg { width: 26px; height: 26px; }
+        
+        .flow-step .text { text-align: left; flex: 1; }
+        .flow-step h3 { margin: 0 0 0.25rem 0; color: var(--text-primary); font-size: 1.25rem; }
+        .flow-step p { margin: 0; font-size: 1rem; }
+        .flow-step strong { color: var(--main-blue); font-weight: 600; }
+        
+        .arrow { font-size: 2.5rem; color: #d1d5db; margin: 0.5rem 0; }
+
+        /* --- Rutas Paralelas --- */
+        .parallel-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin: 2rem 0;
+        }
+        @media (min-width: 768px) { .parallel-container { grid-template-columns: 1fr 1fr; } }
+
+        .parallel-path {
+            border-radius: 16px; padding: 2rem;
+            display: flex; flex-direction: column; gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .parallel-path:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); }
+
+        .parallel-path.whatsapp { background: linear-gradient(to bottom, var(--green-light), var(--white)); border: 1px solid #a7f3d0; }
+        .parallel-path.call { background: linear-gradient(to bottom, var(--orange-light), var(--white)); border: 1px solid #fed7aa; }
+        
+        .path-title {
+            display: flex; align-items: center; gap: 1rem;
+            font-size: 1.5rem; font-weight: 700;
+        }
+        .path-title.whatsapp { color: var(--green-dark); }
+        .path-title.call { color: var(--orange-dark); }
+        .path-title svg { width: 32px; height: 32px; }
+
+        .flow-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 1.5rem; text-align: center;
+        }
+        .flow-card h3 { font-size: 1.1rem; color: var(--text-primary); margin: 0 0 0.5rem 0; }
+        .flow-card p { font-size: 0.95rem; margin: 0; }
+
+        /* --- Paso Final --- */
+        .final-step {
+            background: linear-gradient(90deg, var(--main-blue), var(--light-blue));
+            color: var(--white); border: none; max-width: 800px;
+        }
+        .final-step .icon { background-color: var(--white); color: var(--main-blue); }
+        .final-step h3, .final-step p, .final-step strong { color: inherit; }
+
+        /* ==========================================================================
+           Tarjetas de Beneficios y Métricas
+           ========================================================================== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .benefit-card, .metric-card {
+            background-color: var(--white); border-radius: 16px;
+            padding: 2rem; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); }
+        
+        .benefit-card .icon svg { width: 44px; height: 44px; margin-bottom: 1.5rem; color: var(--light-blue); }
+        .benefit-card h3 { font-size: 1.3rem; color: var(--main-blue); margin: 0 0 0.75rem 0; }
+
+        .metric-card h3 { color: var(--main-blue); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.75rem; }
+        .metric-card ul { list-style: none; padding: 0; margin: 0; }
+        .metric-card li { margin-bottom: 0.75rem; display: flex; align-items: flex-start; }
+        .metric-card li::before {
+            content: '✓'; color: var(--green-dark); font-weight: bold; margin-right: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <img src="https://cdn.bitrix24.es/b15495391/landing/d83/d8337f03f6e3aaff5c6df748f7fc5593/logo_bgu_1x.png" alt="Blackwell Global University Logo" class="header-logo">
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="hero-title">Conectando al Instante con Futuros Alumnos</h1>
+            <p class="hero-subtitle">Presentamos una nueva forma de atender a nuestros postulantes: más rápida, personal y efectiva, desde el primer clic hasta la matrícula.</p>
+
+            <div class="flow-container">
+                
+                <div class="flow-step">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9.973 1.125a.75.75 0 01.543.543L12 6.75l1.484-5.082a.75.75 0 011.086 0L16.5 6.75l1.484-5.082a.75.75 0 011.414.414l-2.08 7.152a.75.75 0 01-.73.5H4.83a.75.75 0 01-.73-.5L2.02 2.082a.75.75 0 011.414-.414L5.418 6.75 6.9 1.668a.75.75 0 011.086 0L9.469 6.75l1.484-5.082a.75.75 0 01-.98-.543zM3.27 12.934a.75.75 0 011.054-.168l3.357 2.493 3.358-2.493a.75.75 0 01.886 1.222l-3.8 2.812a.75.75 0 01-.886 0l-3.8-2.812a.75.75 0 01-.168-1.054z" /></svg></div>
+                    <div class="text">
+                        <h3>1. El Primer Contacto</h3>
+                        <p>Un futuro alumno ve nuestra publicidad en <strong>Facebook o Instagram</strong> y llena el formulario con sus datos.</p>
+                    </div>
+                </div>
+
+                <div class="arrow">▼</div>
+
+                <div class="flow-step">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.828.959-1.298 1.624-.823l5.603 3.113z" clip-rule="evenodd" /></svg></div>
+                    <div class="text">
+                        <h3>2. ¡Acción Inmediata!</h3>
+                        <p>Al instante, sus datos se registran en <strong>Bitrix24</strong> y nuestro sistema automático <strong>(Make)</strong> lanza dos acciones al mismo tiempo.</p>
+                    </div>
+                </div>
+
+                <div class="arrow">▼</div>
+
+                <div class="parallel-container">
+                    <div class="parallel-path whatsapp">
+                        <h2 class="path-title whatsapp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.75 15.823l-3.34-3.34a.75.75 0 10-1.06 1.06l3.87 3.87a.75.75 0 001.06 0l6.37-6.37a.75.75 0 10-1.06-1.06l-5.84 5.84zM12 2.25a.75.75 0 00-.75.75v.516c0 .448-.22.872-.596 1.126l-3.75 2.5a.75.75 0 000 1.248l3.75 2.5c.376.254.596.678.596 1.126v.516a.75.75 0 001.5 0v-.516c0-.448.22-.872.596-1.126l3.75-2.5a.75.75 0 000-1.248l-3.75-2.5A1.75 1.75 0 0012.75 3.28V2.25a.75.75 0 00-.75-.75z" /></svg><span>Ruta 1: El Chat Inteligente</span></h2>
+                        <div class="flow-card">
+                            <h3>A. Saludo por WhatsApp</h3>
+                            <p><strong>Chatfuel</strong> le envía un mensaje. Si responde, un asistente virtual resuelve sus dudas sobre programas y le ofrece un formulario simple.</p>
+                        </div>
+                        <div class="arrow">↓</div>
+                        <div class="flow-card">
+                            <h3>B. Aviso al Equipo</h3>
+                            <p>Apenas llena el formulario, el asesor de admisiones recibe una notificación para contactarlo de inmediato y con prioridad.</p>
+                        </div>
+                    </div>
+
+                    <div class="parallel-path call">
+                        <h2 class="path-title call"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 3.75A4.5 4.5 0 003 8.25v7.5a4.5 4.5 0 004.5 4.5h9a4.5 4.5 0 004.5-4.5v-7.5a4.5 4.5 0 00-4.5-4.5h-9zM12 8.25a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H12zM10.5 8.25a.75.75 0 000 1.5h.75a.75.75 0 000-1.5h-.75zM12 12a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H12zM10.5 12a.75.75 0 000 1.5h.75a.75.75 0 000-1.5h-.75zM8.25 11.25a.75.75 0 01.75-.75h.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM8.25 15a.75.75 0 01.75-.75H9a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM12 15.75a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H12z" /></svg><span>Ruta 2: La Llamada Inmediata</span></h2>
+                        <div class="flow-card">
+                            <h3>A. El Teléfono Suena</h3>
+                            <p>En menos de un minuto, <strong>ORA AI</strong> llama al postulante. No hay esperas, lo contactamos cuando su interés está al máximo.</p>
+                        </div>
+                        <div class="arrow">↓</div>
+                         <div class="flow-card">
+                            <h3>B. Conexión Humana</h3>
+                            <p>El asistente virtual le ofrece hablar con un asesor. Si acepta, la IA lo conecta en la misma llamada con nuestro equipo. ¡Así de fácil!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arrow">▼</div>
+
+                <div class="flow-step final-step">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071 1.052A32.94 32.94 0 0112 11.55a32.94 32.94 0 01-1.892-8.212.75.75 0 00-1.072-1.052L6.107 4.286a.75.75 0 00-1.052 1.072L8.212 9.11a32.94 32.94 0 01-8.212 1.892.75.75 0 00-1.052 1.071l2.004 3.868a.75.75 0 001.072 1.052L9.11 15.788a32.94 32.94 0 011.892 8.212.75.75 0 001.071 1.052l3.868-2.004a.75.75 0 001.052-1.072L15.788 14.89a32.94 32.94 0 018.212-1.892.75.75 0 001.052-1.071l-2.004-3.868a.75.75 0 00-1.072-1.052L14.89 8.212a32.94 32.94 0 01-8.212-1.892L3.336 2.286a.75.75 0 00-1.071 1.052L6.107 7.204a.75.75 0 00.66 1.086 31.42 31.42 0 005.233-1.052.75.75 0 00.414-1.233L9.586 2.286z" clip-rule="evenodd" /></svg></div>
+                    <div class="text">
+                        <h3>El Gran Resultado</h3>
+                        <p>Tenemos a un futuro alumno interesado, con sus dudas resueltas y hablando con un asesor <strong>en cuestión de minutos.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <section>
+                <h2 class="section-title">Los 4 Pilares de Nuestro Éxito</h2>
+                <div class="container cards-grid">
+                    <div class="benefit-card">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg></div>
+                        <h3>Atención Inmediata, Cero Esperas</h3>
+                        <p>Contactamos al postulante en el momento exacto en que piensa en nosotros. Esto aumenta drásticamente la posibilidad de que se interese y continúe el proceso.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.59.372-3.108 1.04-4.425l-1.08-1.08a.75.75 0 00-1.06 0l-1.08 1.08A12 12 0 002.25 12c0 6.627 5.373 12 12 12 3.23 0 6.13-1.268 8.25-3.328l-1.08-1.08a.75.75 0 00-1.06 0l-1.08 1.08z" /></svg></div>
+                        <h3>Trabajamos por Ti, Día y Noche</h3>
+                        <p>No importa si alguien se registra a las 3 AM o en domingo. Nuestro sistema automático siempre dará la primera bienvenida, asegurando que no perdamos ni una sola oportunidad.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg></div>
+                        <h3>Equipo Enfocado en Matricular</h3>
+                        <p>Liberamos a nuestros asesores de las tareas repetitivas. Ahora pueden dedicar su valioso tiempo a lo que mejor saben hacer: convencer y matricular a postulantes ya interesados.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9a9.75 9.75 0 01-4.874-1.996.75.75 0 01-.225-1.042l3.3-5.716a.75.75 0 011.286.042 5.25 5.25 0 009.52 0 .75.75 0 011.286-.042l3.3 5.716a.75.75 0 01-.225 1.042A9.75 9.75 0 0116.5 18.75z" /></svg></div>
+                        <h3>La Mejor Primera Impresión</h3>
+                        <p>Le demostramos al postulante que somos una universidad moderna, eficiente y que valora su tiempo. Esta primera experiencia positiva es clave para que nos elija.</p>
+                    </div>
+                </div>
+            </section>
+
+             <section>
+                <h2 class="section-title">¿Cómo Sabremos que Está Funcionando?</h2>
+                <div class="container cards-grid">
+                    <div class="metric-card">
+                        <h3>Indicadores de Rapidez y Eficiencia</h3>
+                        <ul>
+                            <li>Mediremos el tiempo exacto que tardamos en contactar a cada persona.</li>
+                            <li>Veremos cuántas llamadas son atendidas y cuántos chats se inician.</li>
+                            <li>Contaremos cuántos postulantes son pre-calificados por la IA.</li>
+                        </ul>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Indicadores de Resultados Reales</h3>
+                        <ul>
+                            <li>Sabremos cuántas llamadas terminan en una conversación con un asesor.</li>
+                            <li>Compararemos cuántos leads de chat vs. llamada se convierten en postulantes.</li>
+                            <li>Y lo más importante: mediremos el aumento en la tasa final de matriculados.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Blackwell Global University. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
